@@ -36,7 +36,7 @@
     </el-row>
     <el-row>
         <el-col :span="8">
-            <el-button id="login" v-on:click="check" style="width:100%" type="primary" v-loading.fullscreen.lock="logining">登录</el-button>
+            <el-button id="login" v-on:click="check" style="width:100%" type="primary" v-loading.fullscreen.lock="logining">{{loginText}}</el-button>
         </el-col>
     </el-row>
 </div>
@@ -44,13 +44,16 @@
 @section scripts {
     <script type="text/javascript">
         window.onload = function () {
-            new Vue({
+            var data = {
+                name: '',
+                password: '',
+                logining: false,
+                loginText: "登录1"
+            };
+            Object.freeze(data)
+            var vm = new Vue({
                 el: '#app',
-                data: {
-                    name: '',
-                    password: '',
-                    logining: false
-                },
+                data: data,
                 methods: {
                     check: function (event) {
                         //获取值
@@ -87,7 +90,9 @@
                         });
                     }
                 }
-            })
+            });
+
+            vm.loginText = "login";
         }
     </script>
 }
