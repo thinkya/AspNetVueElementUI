@@ -36,7 +36,7 @@
     </el-row>
     <el-row>
         <el-col :span="8">
-            <el-button id="login" v-on:click="check" style="width:100%" type="primary" v-loading.fullscreen.lock="logining">{{loginText}}</el-button>
+            <el-button id="login" style="width:100%" type="primary" v-loading.fullscreen.lock="logining">{{loginText}}</el-button>
         </el-col>
     </el-row>
 </div>
@@ -50,7 +50,7 @@
                 logining: false,
                 loginText: "登录"
             };
-            Object.freeze(data)
+            //Object.freeze(data)
             var vm = new Vue({
                 el: '#app',
                 data: data,
