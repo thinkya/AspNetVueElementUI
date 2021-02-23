@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section styles{
+    <style>
+        .el-row {
+            margin-bottom: 20px;
+        }
+
+        .login-box {
+            margin-top: 20px;
+        }
+    </style>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="login-box" id="app">
+        <el-row>
+            <el-col :span="8">
+                <el-input id="name" v-model="name" placeholder="请输入帐号">
+                    <template slot="prepend">
+                        帐号
+                    </template>
+                </el-input>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="8">
+                <el-input id="password" v-model="password" type="password" placeholder="请输入密码">
+                    <template slot="prepend">
+                        密码
+                    </template>
+                </el-input>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="8">
+                <el-button id="login" style="width:100%" type="primary" v-loading.fullscreen.lock="logining">{{loginText}}</el-button>
+            </el-col>
+        </el-row>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        window.onload = function () {
+            var data = {
+                name: '',
+                password: '',
+                logining: false,
+                loginText: "登录"
+            };
+            //Object.freeze(data)
+            var vm = new Vue({
+                el: '#app',
+                data: data,
+                methods: {
+                    check: function (event) {
+                        //获取值
+                        var name = this.name;
+                        var password = this.password;
+                        if (name == '' || password == '') {
+                            this.$message({
+                                message: '账号或密码为空！',
+                                type: 'error'
+                            })
+                            return;
+                        }
+                        var turnUrl = "/";
+                        var url = '/api/login/UserLogin?account=' + name + "&password=" + password;
+                        this.logining = true;
+                        this.$http.get(url).then(function (res) {
+                            var result = res.body;
+                            this.$message({
+                                message: result.Message,
+                                type: result.Status == 0 ? 'success' : 'error'
+                            })
+                            this.logining = false;
+                            if (result.Status == 0) {
+                                //global.setUser(result.Data.UserGuid, result.Data.UserName);
+                                window.location = turnUrl;
+                            }
+                        }, function (e) {
+                            console.log(e);
+                            this.$message({
+                                message: '登录异常',
+                                type: 'error'
+                            })
+                            this.logining = false;
+                        });
+                    }
+                }
+            });
+
+            vm.loginText = "login";
+        }
+    </script>
+}

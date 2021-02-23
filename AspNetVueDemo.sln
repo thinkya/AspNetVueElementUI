@@ -9,6 +9,8 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "VuejsApp1", "VuejsApp1\Vuej
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkVue", "AspNetFrameworkVue\AspNetFrameworkVue.csproj", "{A6D4B84D-2A3E-4174-9301-2764D938E924}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreVue", "AspNetCoreVue\AspNetCoreVue.csproj", "{BE70A660-839F-4941-884C-789D8BBD8D00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A6D4B84D-2A3E-4174-9301-2764D938E924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6D4B84D-2A3E-4174-9301-2764D938E924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6D4B84D-2A3E-4174-9301-2764D938E924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE70A660-839F-4941-884C-789D8BBD8D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE70A660-839F-4941-884C-789D8BBD8D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE70A660-839F-4941-884C-789D8BBD8D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE70A660-839F-4941-884C-789D8BBD8D00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
